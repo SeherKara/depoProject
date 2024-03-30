@@ -1,23 +1,19 @@
-import java.util.Map;
+package Project;
+
+import java.util.HashMap;
 
 public class Urun {
-    private int id;
+    static HashMap<Integer,Urun> urunList=new HashMap<>();
+    private int id = 1000;
     private String urunIsmi;
     private String uretici;
     private int miktar;
     private String birim;
-
     private String raf;
+
 
     public Urun() {
     }
-
-    public Urun(String urunIsmi, String uretici, String birim) {
-        this.urunIsmi = urunIsmi;
-        this.uretici = uretici;
-        this.birim = birim;
-    }
-
     public Urun(int id, String urunIsmi, String uretici, int miktar, String birim, String raf) {
         this.id = id;
         this.urunIsmi = urunIsmi;
@@ -26,7 +22,6 @@ public class Urun {
         this.birim = birim;
         this.raf = raf;
     }
-
 
 
     public int getId() {
@@ -42,10 +37,7 @@ public class Urun {
     }
 
     public void setUrunIsmi(String urunIsmi) {
-
-
-
-        this.urunIsmi = this.urunIsmi;
+        this.urunIsmi = urunIsmi;
     }
 
     public String getUretici() {
@@ -53,7 +45,7 @@ public class Urun {
     }
 
     public void setUretici(String uretici) {
-        this.uretici = this.uretici;
+        this.uretici = uretici;
     }
 
     public int getMiktar() {
@@ -61,7 +53,6 @@ public class Urun {
     }
 
     public void setMiktar(int miktar) {
-
         this.miktar = miktar;
     }
 
@@ -69,8 +60,8 @@ public class Urun {
         return birim;
     }
 
-    public void setBirim(int birim) {
-        this.birim = this.birim;
+    public void setBirim(String birim) {
+        this.birim = birim;
     }
 
     public String getRaf() {
