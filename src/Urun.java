@@ -1,3 +1,5 @@
+import java.util.Map;
+
 public class Urun {
     private int id;
     private String urunIsmi;
@@ -40,6 +42,9 @@ public class Urun {
     }
 
     public void setUrunIsmi(String urunIsmi) {
+
+
+
         this.urunIsmi = this.urunIsmi;
     }
 

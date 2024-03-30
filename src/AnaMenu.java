@@ -83,16 +83,37 @@ public class AnaMenu implements AnaManuInterFace{
         System.out.println("Urunun birimini giriniz");
         String birim=scan.next();
 
-        int miktar=0;
-        String raf=null;
-        Urun urun=new Urun(urunIsmi,uretici,birim);
+////        int miktar=0;
+////        String raf=null;
+//        Urun urun=new Urun(urunIsmi,uretici,birim);
+//
+//
+//        // Ürünü HashMap'e ekleme
+//        urunler.put(id, urun);
+//        id++;
+//
+//        System.out.println("Ürün başarıyla tanımlandı: " + urun);
+//        //urunListeleme();/
 
-        // Ürünü HashMap'e ekleme
-       urunler.put(id, urun);
-        id++;
+        boolean urunVarMi = false;
 
-        System.out.println("Ürün başarıyla tanımlandı: " + urun);
-        //urunListeleme();
+        for (Map.Entry<Integer, Urun> entry : urunler.entrySet()) {
+            Urun urun = entry.getValue();
+            if (urun.getUrunIsmi().equals(urunIsmi) && urun.getUretici().equals(uretici)) {
+                urunVarMi = true;
+                break;
+            }
+        }
+
+        if (!urunVarMi) {
+            Urun urun = new Urun(urunIsmi, uretici, birim);
+            urunler.put(id, urun);
+            id++;
+
+            System.out.println("Ürün başarıyla tanımlandı: " + urun);
+        } else {
+            System.out.println("Bu ürün zaten eklenmiş!");
+        }
         girisEkrani();
     }
 
