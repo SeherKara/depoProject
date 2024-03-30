@@ -12,7 +12,7 @@ public class AnaMenu implements AnaMenuInterFace {
     public static final String W = "\u001B[37m";
     public static final String ITALIC = "\u001B[3m";
 
-   Urun urun=new Urun();
+
 
    public  void girisEkrani(){
        System.out.println(M + "========================== İŞLEMLER =======================\r\n"
@@ -66,6 +66,7 @@ public class AnaMenu implements AnaMenuInterFace {
 
     @Override
    public   void urunTanimlama() {
+        Urun urun=new Urun();
         System.out.println("Lutfen urunun ismini giriniz");
         urun.setUrunIsmi(stringGirisi());
         System.out.println("Lutfen uretici adini giriniz");
