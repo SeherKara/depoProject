@@ -4,6 +4,5 @@ public class Runner {
         AnaMenu obj = new AnaMenu();
         obj.girisEkrani();
 
-
     }
 }
