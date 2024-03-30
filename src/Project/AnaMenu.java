@@ -128,7 +128,7 @@ public class AnaMenu implements AnaMenuInterFace {
         System.out.println("Rafa eklenecek ürün Id si giriniz:");
         int id=intGirisi();
         if (Urun.urunList.keySet().contains(id)) {
-            System.out.println("Hangi rafa ekleme yapmak istiyorsunuz: " + urun);
+            System.out.println("Hangi rafa ekleme yapmak istiyorsunuz: " + Urun.urunList.get(id));
             String raf=stringGirisi();
             Urun.urunList.get(id).setRaf(raf);
             System.out.println("Ürün rafa ekleme işlemi başarılı!");
