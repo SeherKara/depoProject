@@ -93,7 +93,9 @@ public class AnaMenu implements AnaManuInterFace{
 //        id++;
 //
 //        System.out.println("Ürün başarıyla tanımlandı: " + urun);
-//        //urunListeleme();/
+//        //urunListeleme();
+
+        //branchden sonra
 
         boolean urunVarMi = false;
 
