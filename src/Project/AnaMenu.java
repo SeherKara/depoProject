@@ -66,11 +66,11 @@ public class AnaMenu implements AnaMenuInterFace {
 
     @Override
    public   void urunTanimlama() {
-        System.out.println("Urunun ismini giriniz");
+        System.out.println("Lutfen urunun ismini giriniz");
         urun.setUrunIsmi(stringGirisi());
-        System.out.println("Urunun uretici markasını giriniz");
+        System.out.println("Lutfen uretici adini giriniz");
         urun.setUretici(stringGirisi());
-        System.out.println("Urunun birimini giriniz");
+        System.out.println("Lutfen birimi giriniz");
         urun.setBirim(stringGirisi());
 
         // Ürünü HashMap'e ekleme

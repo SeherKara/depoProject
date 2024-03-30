@@ -24,7 +24,6 @@ public class Urun {
     }
 
 
-
     public static int getId() {
         return id;
     }
@@ -38,7 +37,7 @@ public class Urun {
     }
 
     public void setUrunIsmi(String urunIsmi) {
-        this.urunIsmi = this.urunIsmi;
+        this.urunIsmi = urunIsmi;
     }
 
     public String getUretici() {
@@ -46,7 +45,7 @@ public class Urun {
     }
 
     public void setUretici(String uretici) {
-        this.uretici = this.uretici;
+        this.uretici = uretici;
     }
 
     public int getMiktar() {
@@ -54,7 +53,6 @@ public class Urun {
     }
 
     public void setMiktar(int miktar) {
-
         this.miktar = miktar;
     }
 
@@ -63,7 +61,7 @@ public class Urun {
     }
 
     public void setBirim(String birim) {
-        this.birim = this.birim;
+        this.birim = birim;
     }
 
     public String getRaf() {
