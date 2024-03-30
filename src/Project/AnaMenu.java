@@ -1,19 +1,17 @@
 package Project;
 
 import java.util.HashMap;
-import java.util.InputMismatchException;
 import java.util.Map;
 import static Project.TryCatch.*;
 
-public class AnaMenu implements AnaManuInterFace{
+public class AnaMenu implements AnaMenuInterFace {
     public static final String M = "\u001B[35m";
     public static final String G = "\u001B[32m";
     public static final String Y = "\u001B[33m";
     public static final String CB = "\u001B[34m";
     public static final String W = "\u001B[37m";
     public static final String ITALIC = "\u001B[3m";
-  static HashMap<Integer,Urun> urunler=new HashMap<>();
-   static int id = 1000;
+
    Urun urun=new Urun();
 
    public  void girisEkrani(){
@@ -68,25 +66,18 @@ public class AnaMenu implements AnaManuInterFace{
 
     @Override
    public   void urunTanimlama() {
-
-
         System.out.println("Urunun ismini giriniz");
-        String urunIsmi=stringGirisi();
+        urun.setUrunIsmi(stringGirisi());
         System.out.println("Urunun uretici markasını giriniz");
-        String uretici=stringGirisi();
+        urun.setUretici(stringGirisi());
         System.out.println("Urunun birimini giriniz");
-        String birim=stringGirisi();
-
-        int miktar=0;
-        String raf=null;
-        Urun urun=new Urun(urunIsmi,uretici,birim);
+        urun.setBirim(stringGirisi());
 
         // Ürünü HashMap'e ekleme
-       urunler.put(id, urun);
-        id++;
 
+        Urun.urunList.put(Urun.getId(), urun); //Static id cagirilip Urunler
+        Urun.setId(Urun.getId() + 1); //
         System.out.println("Ürün başarıyla tanımlandı: " + urun);
-        //urunListeleme();
         girisEkrani();
     }
 
@@ -96,7 +87,7 @@ public class AnaMenu implements AnaManuInterFace{
         System.out.println(CB+"id\t\tismi\turetcisi\t\tmiktarı\t\tbirimi\t\traf" +
                 "\n-------------------------------------------------------------"+W);
                 Urun yeniUrun=new Urun();
-                for (Map.Entry<Integer, Urun> entry : urunler.entrySet()) {
+                for (Map.Entry<Integer, Urun> entry : Urun.urunList.entrySet()) {
                     System.out.println(entry.getKey() + "\t\t" + entry.getValue().getUrunIsmi() + "\t\t" + entry.getValue().getUretici() +
                             "\t\t" + entry.getValue().getMiktar() + "\t\t" + entry.getValue().getBirim() + "\t\t" + entry.getValue().getRaf());
                 }
@@ -112,11 +103,10 @@ public class AnaMenu implements AnaManuInterFace{
        urunListeleme();
         System.out.println("Eklemek istediğiniz ürünün Id sini giriniz");
        int Id=intGirisi();
-
-        if (urunler.keySet().contains(Id)) {
+        if (Urun.urunList.keySet().contains(Id)) {
             System.out.println("Kaç tane ekleme yapmak istiyorsunuz");
                 int yeniMiktar=intGirisi();
-            Urun urun = urunler.get(Id); // Ilgili urunu alıyorum
+            Urun urun = Urun.urunList.get(Id); // Ilgili urunu alıyorum
             int eskiMiktar = urun.getMiktar(); // Mevcut miktarı yazdırıyorum
             int toplamMiktar = eskiMiktar + yeniMiktar; // eskimik+yeni miktar
 
@@ -136,10 +126,10 @@ public class AnaMenu implements AnaManuInterFace{
        urunListeleme();
         System.out.println("Rafa eklenecek ürün Id si giriniz:");
         int id=intGirisi();
-        if (urunler.keySet().contains(id)) {
+        if (Urun.urunList.keySet().contains(id)) {
             System.out.println("Hangi rafa ekleme yapmak istiyorsunuz: " + urun);
             String raf=stringGirisi();
-            urunler.get(id).setRaf(raf);
+            Urun.urunList.get(id).setRaf(raf);
             System.out.println("Ürün rafa ekleme işlemi başarılı!");
         }else System.out.println("Bu Id de ürün yok");
 
@@ -151,13 +141,13 @@ public class AnaMenu implements AnaManuInterFace{
        urunListeleme();
         System.out.println("Hangi Urunu sistemden çıkartmak istiyorsunuz");
         int id=intGirisi();
-        if (urunler.keySet().contains(id)) {
+        if (Urun.urunList.keySet().contains(id)) {
             System.out.println("Kaç adet urun çıkartmak istiyorsunuz");
             int cikarilanMiktar=intGirisi();
             if (cikarilanMiktar<0){
                 System.out.println("Eksili değer çıkartamazsınız..");
             }else {
-                Urun urun = urunler.get(id);
+                Urun urun = Urun.urunList.get(id);
                 int yeniMiktar = urun.getMiktar() - cikarilanMiktar;
 
                 if (yeniMiktar >= 0) {

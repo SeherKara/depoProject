@@ -1,25 +1,21 @@
 package Project;
 
+import java.util.HashMap;
+
 public class Urun {
-    private int id;
+    static HashMap<Integer,Urun> urunList=new HashMap<>();
+    private static int id = 1000;
     private String urunIsmi;
     private String uretici;
     private int miktar;
     private String birim;
-
     private String raf;
+
 
     public Urun() {
     }
-
-    public Urun(String urunIsmi, String uretici, String birim) {
-        this.urunIsmi = urunIsmi;
-        this.uretici = uretici;
-        this.birim = birim;
-    }
-
     public Urun(int id, String urunIsmi, String uretici, int miktar, String birim, String raf) {
-        this.id = id;
+        Urun.id = id;
         this.urunIsmi = urunIsmi;
         this.uretici = uretici;
         this.miktar = miktar;
@@ -29,12 +25,12 @@ public class Urun {
 
 
 
-    public int getId() {
+    public static int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public static void setId(int id) {
+        Urun.id = id;
     }
 
     public String getUrunIsmi() {
@@ -66,7 +62,7 @@ public class Urun {
         return birim;
     }
 
-    public void setBirim(int birim) {
+    public void setBirim(String birim) {
         this.birim = this.birim;
     }
 
