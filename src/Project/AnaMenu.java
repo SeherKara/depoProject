@@ -1,7 +1,9 @@
+package Project;
+
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Map;
-import java.util.Scanner;
+import static Project.TryCatch.*;
 
 public class AnaMenu implements AnaManuInterFace{
     public static final String M = "\u001B[35m";
@@ -10,13 +12,11 @@ public class AnaMenu implements AnaManuInterFace{
     public static final String CB = "\u001B[34m";
     public static final String W = "\u001B[37m";
     public static final String ITALIC = "\u001B[3m";
-   static Scanner scan=new Scanner(System.in);
   static HashMap<Integer,Urun> urunler=new HashMap<>();
    static int id = 1000;
    Urun urun=new Urun();
 
    public  void girisEkrani(){
-       try{
        System.out.println(M + "========================== İŞLEMLER =======================\r\n"
                + "   ____________________             ____________________    \n"
                + "   | 1-URUN TANIMLAMA  |            | 2-URUN GİRİSİ|  \n"
@@ -28,7 +28,7 @@ public class AnaMenu implements AnaManuInterFace{
                + "   | 5-URUN LİSTELE    |            | 6-CIKIS           |   \n"
                + "   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯             ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯       " +Y+ITALIC);
        System.out.println("ISLEM SECIMI YAPINIZ");
-       int secim=scan.nextInt();
+       int secim=intGirisi();
        switch (secim){
            case 1:
                urunTanimlama();
@@ -56,13 +56,7 @@ public class AnaMenu implements AnaManuInterFace{
            default:
                System.out.println("Yanlış tusa bastınız..");
               girisEkrani();
-       }}
-       catch (InputMismatchException e) {
-           System.out.println("Hatalı giriş yaptınız. Lütfen bir sayı giriniz.");
-           scan.next();
-           girisEkrani();
        }
-
    }
 
 
@@ -77,11 +71,11 @@ public class AnaMenu implements AnaManuInterFace{
 
 
         System.out.println("Urunun ismini giriniz");
-        String urunIsmi=scan.next();
+        String urunIsmi=stringGirisi();
         System.out.println("Urunun uretici markasını giriniz");
-        String uretici=scan.next();
+        String uretici=stringGirisi();
         System.out.println("Urunun birimini giriniz");
-        String birim=scan.next();
+        String birim=stringGirisi();
 
         int miktar=0;
         String raf=null;
@@ -117,11 +111,11 @@ public class AnaMenu implements AnaManuInterFace{
     public void urunGirisi() {
        urunListeleme();
         System.out.println("Eklemek istediğiniz ürünün Id sini giriniz");
-       int Id=scan.nextInt();
+       int Id=intGirisi();
 
         if (urunler.keySet().contains(Id)) {
             System.out.println("Kaç tane ekleme yapmak istiyorsunuz");
-                int yeniMiktar=scan.nextInt();
+                int yeniMiktar=intGirisi();
             Urun urun = urunler.get(Id); // Ilgili urunu alıyorum
             int eskiMiktar = urun.getMiktar(); // Mevcut miktarı yazdırıyorum
             int toplamMiktar = eskiMiktar + yeniMiktar; // eskimik+yeni miktar
@@ -141,10 +135,10 @@ public class AnaMenu implements AnaManuInterFace{
     public  void urunuRafaKoy() {
        urunListeleme();
         System.out.println("Rafa eklenecek ürün Id si giriniz:");
-        int id=scan.nextInt();
+        int id=intGirisi();
         if (urunler.keySet().contains(id)) {
             System.out.println("Hangi rafa ekleme yapmak istiyorsunuz: " + urun);
-            String raf=scan.next();
+            String raf=stringGirisi();
             urunler.get(id).setRaf(raf);
             System.out.println("Ürün rafa ekleme işlemi başarılı!");
         }else System.out.println("Bu Id de ürün yok");
@@ -156,10 +150,10 @@ public class AnaMenu implements AnaManuInterFace{
     public  void urunCikisi() {
        urunListeleme();
         System.out.println("Hangi Urunu sistemden çıkartmak istiyorsunuz");
-        int id=scan.nextInt();
+        int id=intGirisi();
         if (urunler.keySet().contains(id)) {
             System.out.println("Kaç adet urun çıkartmak istiyorsunuz");
-            int cikarilanMiktar=scan.nextInt();
+            int cikarilanMiktar=intGirisi();
             if (cikarilanMiktar<0){
                 System.out.println("Eksili değer çıkartamazsınız..");
             }else {

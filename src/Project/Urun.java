@@ -1,3 +1,5 @@
+package Project;
+
 public class Urun {
     private int id;
     private String urunIsmi;
