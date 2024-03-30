@@ -77,9 +77,9 @@ public class AnaMenu implements AnaMenuInterFace {
 
         // Ürünü HashMap'e ekleme
 
-//        Urun.urunList.put(Urun.getId(), urun); //Static id cagirilip Urunler
-//        Urun.setId(Urun.getId()+1 ); //
-//        System.out.println("Ürün başarıyla tanımlandı: " + urun);
+        //        Urun.urunList.put(Urun.getId(), urun); //Static id cagirilip Urunler
+        //        Urun.setId(Urun.getId()+1 ); //
+        //        System.out.println("Ürün başarıyla tanımlandı: " + urun);
 
         boolean urunVarMi = false;
         for (Urun varOlanUrun : Urun.urunList.values()) {
