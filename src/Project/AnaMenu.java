@@ -64,6 +64,7 @@ public class AnaMenu implements AnaMenuInterFace {
         System.exit(0);
     }
 
+
     @Override
    public   void urunTanimlama() {
         Urun urun=new Urun();
