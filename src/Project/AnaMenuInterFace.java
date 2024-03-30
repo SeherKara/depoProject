@@ -1,4 +1,6 @@
-public interface AnaManuInterFace {
+package Project;
+
+public interface AnaMenuInterFace {
     void urunTanimlama();
      void urunListeleme();
     void  urunGirisi();
