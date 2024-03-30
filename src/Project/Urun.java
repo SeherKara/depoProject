@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Urun {
     static HashMap<Integer,Urun> urunList=new HashMap<>();
-    private static int id = 1000;
+    private int id = 1000;
     private String urunIsmi;
     private String uretici;
     private int miktar;
@@ -15,7 +15,7 @@ public class Urun {
     public Urun() {
     }
     public Urun(int id, String urunIsmi, String uretici, int miktar, String birim, String raf) {
-        Urun.id = id;
+        this.id = id;
         this.urunIsmi = urunIsmi;
         this.uretici = uretici;
         this.miktar = miktar;
@@ -24,12 +24,12 @@ public class Urun {
     }
 
 
-    public static int getId() {
+    public int getId() {
         return id;
     }
 
-    public static void setId(int id) {
-        Urun.id = id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUrunIsmi() {

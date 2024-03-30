@@ -66,7 +66,7 @@ public class AnaMenu implements AnaMenuInterFace {
 
 
     @Override
-   public   void urunTanimlama() {
+    public   void urunTanimlama() {
         Urun urun=new Urun();
         System.out.println("Lutfen urunun ismini giriniz");
         urun.setUrunIsmi(stringGirisi());
@@ -77,9 +77,27 @@ public class AnaMenu implements AnaMenuInterFace {
 
         // Ürünü HashMap'e ekleme
 
-        Urun.urunList.put(Urun.getId(), urun); //Static id cagirilip Urunler
-        Urun.setId(Urun.getId() + 1); //
-        System.out.println("Ürün başarıyla tanımlandı: " + urun);
+//        Urun.urunList.put(Urun.getId(), urun); //Static id cagirilip Urunler
+//        Urun.setId(Urun.getId()+1 ); //
+//        System.out.println("Ürün başarıyla tanımlandı: " + urun);
+
+        boolean urunVarMi = false;
+        for (Urun varOlanUrun : Urun.urunList.values()) {
+            if (varOlanUrun.getUrunIsmi().equals(urun.getUrunIsmi()) && varOlanUrun.getUretici().equals(urun.getUretici())) {
+                urunVarMi = true;
+                break;
+            }
+        }
+
+
+        if (urunVarMi) {
+            System.out.println("Bu ürün zaten ekli.");
+        } else {
+            int yeniId = Urun.urunList.isEmpty() ? 1000 : Urun.urunList.keySet().stream().max(Integer::compareTo).orElse(1000) + 1;
+            urun.setId(yeniId);
+            Urun.urunList.put(yeniId, urun);
+            System.out.println("Ürün başarıyla tanımlandı: " + urun);
+        }
         girisEkrani();
     }
 
