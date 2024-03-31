@@ -126,11 +126,11 @@ public class AnaMenu implements AnaMenuInterFace {
         if (Urun.urunList.keySet().contains(Id)) {
             System.out.println("Kaç tane ekleme yapmak istiyorsunuz");
                 int yeniMiktar=intGirisi();
-            Urun urun = Urun.urunList.get(Id); // Ilgili urunu alıyorum
-            int eskiMiktar = urun.getMiktar(); // Mevcut miktarı yazdırıyorum
+            //Urun urun = Urun.urunList.get(Id); // Ilgili urunu alıyorum
+            int eskiMiktar = Urun.urunList.get(Id).getMiktar(); // Mevcut miktarı yazdırıyorum
             int toplamMiktar = eskiMiktar + yeniMiktar; // eskimik+yeni miktar
 
-            urun.setMiktar(toplamMiktar); // Yeni miktarı atama yaptım
+            Urun.urunList.get(Id).setMiktar(toplamMiktar); // Yeni miktarı atama yaptım
             System.out.println("Ürün girişi başarılı! Yeni miktar: " + toplamMiktar);
 
 
@@ -167,13 +167,13 @@ public class AnaMenu implements AnaMenuInterFace {
             if (cikarilanMiktar<0){
                 System.out.println("Eksili değer çıkartamazsınız..");
             }else {
-                Urun urun = Urun.urunList.get(id);
-                int yeniMiktar = urun.getMiktar() - cikarilanMiktar;
+                //Urun urun = Urun.urunList.get(id);
+                int yeniMiktar = Urun.urunList.get(id).getMiktar() - cikarilanMiktar;
 
                 if (yeniMiktar >= 0) {
-                    urun.setMiktar(yeniMiktar);
+                    Urun.urunList.get(id).setMiktar(yeniMiktar);
                     System.out.println("Urun cikisi gerçekleştirildi");
-                } else System.out.println("Sistemde olan " + urun.getMiktar() + "fazla urun çıkısı yapamzsınız");
+                } else System.out.println("Sistemde olan " + Urun.urunList.get(id).getMiktar() + "fazla urun çıkısı yapamzsınız");
             }
         }else System.out.println("Bu Id de ürün yok");
 
