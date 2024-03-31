@@ -1,6 +1,6 @@
 package Project;
 
-import java.util.HashMap;
+
 import java.util.Map;
 import static Project.TryCatch.*;
 
@@ -75,11 +75,6 @@ public class AnaMenu implements AnaMenuInterFace {
         System.out.println("Lutfen birimi giriniz");
         urun.setBirim(stringGirisi());
 
-        // Ürünü HashMap'e ekleme
-
-        //        Urun.urunList.put(Urun.getId(), urun); //Static id cagirilip Urunler
-        //        Urun.setId(Urun.getId()+1 ); //
-        //        System.out.println("Ürün başarıyla tanımlandı: " + urun);
 
         boolean urunVarMi = false;
         for (Urun varOlanUrun : Urun.urunList.values()) {
@@ -106,7 +101,6 @@ public class AnaMenu implements AnaMenuInterFace {
 
         System.out.println(CB+"id\t\tismi\turetcisi\t\tmiktarı\t\tbirimi\t\traf" +
                 "\n-------------------------------------------------------------"+W);
-                Urun yeniUrun=new Urun();
                 for (Map.Entry<Integer, Urun> entry : Urun.urunList.entrySet()) {
                     System.out.println(entry.getKey() + "\t\t" + entry.getValue().getUrunIsmi() + "\t\t" + entry.getValue().getUretici() +
                             "\t\t" + entry.getValue().getMiktar() + "\t\t" + entry.getValue().getBirim() + "\t\t" + entry.getValue().getRaf());
@@ -123,7 +117,7 @@ public class AnaMenu implements AnaMenuInterFace {
        urunListeleme();
         System.out.println("Eklemek istediğiniz ürünün Id sini giriniz");
        int Id=intGirisi();
-        if (Urun.urunList.keySet().contains(Id)) {
+        if (Urun.urunList.containsKey(Id)) {
             System.out.println("Kaç tane ekleme yapmak istiyorsunuz");
                 int yeniMiktar=intGirisi();
             //Urun urun = Urun.urunList.get(Id); // Ilgili urunu alıyorum
@@ -146,7 +140,7 @@ public class AnaMenu implements AnaMenuInterFace {
        urunListeleme();
         System.out.println("Rafa eklenecek ürün Id si giriniz:");
         int id=intGirisi();
-        if (Urun.urunList.keySet().contains(id)) {
+        if (Urun.urunList.containsKey(id)) {
             System.out.println("Hangi rafa ekleme yapmak istiyorsunuz: " + Urun.urunList.get(id));
             String raf=stringGirisi();
             Urun.urunList.get(id).setRaf(raf);
@@ -161,7 +155,7 @@ public class AnaMenu implements AnaMenuInterFace {
        urunListeleme();
         System.out.println("Hangi Urunu sistemden çıkartmak istiyorsunuz");
         int id=intGirisi();
-        if (Urun.urunList.keySet().contains(id)) {
+        if (Urun.urunList.containsKey(id)) {
             System.out.println("Kaç adet urun çıkartmak istiyorsunuz");
             int cikarilanMiktar=intGirisi();
             if (cikarilanMiktar<0){
